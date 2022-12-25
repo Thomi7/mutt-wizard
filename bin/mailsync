@@ -106,7 +106,8 @@ done
 
 wait
 
-notmuch new --quiet
+# notmuch new --quiet
+mu-index
 
 #Create a touch file that indicates the time of the last run of mailsync
 touch "$lastrun"
