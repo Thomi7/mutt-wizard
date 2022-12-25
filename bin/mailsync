@@ -77,7 +77,7 @@ if [ "$#" -gt "0" ]; then
 	done
 	accounts=$*
 fi
-[ -z "$imap_accounts" ] && [ -r "$MBSYNCRC" ] && imap_accounts="$(awk '/^Channel/ {print $2}' "$MBSYNCRC" 2>/dev/null)"
+[ -z "$imap_accounts" ] && [ -r "$MBSYNCRC" ] && imap_accounts="$(awk '/^Channel|^Group/ {print $2}' "$MBSYNCRC" | grep -v '\-plain$\|-mail$' 2>/dev/null)"
 [ -z "$pop_accounts" ] && [ -r "$MPOPRC" ] && pop_accounts="$(awk '/^account/ {print $2}' "$MPOPRC" 2>/dev/null)"
 
 # Parallelize multiple accounts
