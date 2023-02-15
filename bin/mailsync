@@ -76,7 +76,7 @@ syncandnotify() {
 				from="$(sed -n "/^From:/ s|From: *|| p" "$file" |
 					perl -CS -MEncode -ne 'print decode("MIME-Header", $_)')"
 				from="${from% *}" ; from="${from%\"}" ; from="${from#\"}"
-				notify "📧$from:" "$subject"
+				notify "📧 $from:" "$subject"
 			done
 			;;
 		*) echo "No new mail for $2." ;;
